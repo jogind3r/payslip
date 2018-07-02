@@ -3,8 +3,9 @@
 Simple application to calculate the tax
 Please find the postman collection in the repo (payslip.postman_collection.json)
 
+# how to run:
+
 ```sh
-how to run:
 npm install
 run app: npm start
 run tests: npm test
