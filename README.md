@@ -29,4 +29,4 @@ name: "Andrew Smith",
 };
 ```
 
--   Please find the postman collection in the repo (payslip.postman_collection.json) to review different requests
+-   Please find the postman collection in the project directory to review different requests (payslip.postman_collection.json)
