@@ -12,6 +12,7 @@ const app = express();
 try {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
+    // middleware to check special characters entered by user that can break the router
     app.use(function(req, res, next) {
         const err = null;
         try {
@@ -28,6 +29,7 @@ try {
 
         next();
     });
+    // root route to give out api information
     app.get('/', (req, res) => {
         const response = {
             info: 'payslip api',
