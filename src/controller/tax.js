@@ -13,6 +13,8 @@ class IncomeTax {
                 const salary = req.body.annualSalary || error();
                 const rate = req.body.superRate || error();
                 const r = this.calculate(salary, rate) || error();
+                if (salary < 0 || rate < 0 || (isNaN(salary) || isNaN(rate))) error();
+
                 response = {
                     name: fname + ' ' + lname,
                     'pay-period': period,

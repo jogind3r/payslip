@@ -1,0 +1,32 @@
+1. assumptions
+  - User will provide the numeric and string values as required
+  ( 400 error for bad request and 500 error for data exception will be thrown )
+
+2. https://github.com/jogind3r/payslip
+
+3. to run the application
+    npm install
+    run tests: npm test
+    run app: npm start
+     - please check the postman collection to look into other request examples
+
+
+ 4. sample input and output
+    sampleInput = {
+      paymentPeriod: "31 march",
+      firstName: "Andrew",
+      lastName: "Smith",
+      annualSalary: "60050",
+      superRate: "9"
+    };
+
+    sampleOutput = {
+      name: "Andrew Smith",
+      "pay-period": "31 march",
+      "gross-income": "5004",
+      "income-tax": "922",
+      "net-income": "4082",
+      "super-amount": "450"
+    };
+
+5. Instructions added to readme

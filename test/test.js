@@ -67,13 +67,160 @@ describe('API endpoint /payslip', function() {
     });
 
     // POST - Bad Request
-    it('should return Bad Request', function() {
+    it('should return Bad Request - First Name value not present', function() {
         return chai
             .request(app)
             .post('/payslip')
             .type('form')
             .send({
-                sample: 'sample'
+                paymentPeriod: '31 march',
+                lastName: 'Smith',
+                annualSalary: '60050',
+                superRate: '9'
+            })
+            .then(function(res) {
+                expect(res).to.have.status(400);
+            })
+            .catch(function(err) {
+                expect(err).to.have.status(400);
+            });
+    });
+    it('should return Bad Request - Last Name value not present', function() {
+        return chai
+            .request(app)
+            .post('/payslip')
+            .type('form')
+            .send({
+                paymentPeriod: '31 march',
+                FirstName: 'Smith',
+                annualSalary: '60050',
+                superRate: '9'
+            })
+            .then(function(res) {
+                expect(res).to.have.status(400);
+            })
+            .catch(function(err) {
+                expect(err).to.have.status(400);
+            });
+    });
+    it('should return Bad Request - Salary value not present', function() {
+        return chai
+            .request(app)
+            .post('/payslip')
+            .type('form')
+            .send({
+                paymentPeriod: '31 march',
+                firstName: 'Andrew',
+                lastName: 'Smith',
+                superRate: '9'
+            })
+            .then(function(res) {
+                expect(res).to.have.status(400);
+            })
+            .catch(function(err) {
+                expect(err).to.have.status(400);
+            });
+    });
+    it('should return Bad Request - Rate value not present', function() {
+        return chai
+            .request(app)
+            .post('/payslip')
+            .type('form')
+            .send({
+                paymentPeriod: '31 march',
+                firstName: 'Andrew',
+                lastName: 'Smith',
+                annualSalary: '60050'
+            })
+            .then(function(res) {
+                expect(res).to.have.status(400);
+            })
+            .catch(function(err) {
+                expect(err).to.have.status(400);
+            });
+    });
+    it('should return Bad Request - Payment period value not present', function() {
+        return chai
+            .request(app)
+            .post('/payslip')
+            .type('form')
+            .send({
+                firstName: 'Andrew',
+                lastName: 'Smith',
+                annualSalary: '60050',
+                superRate: '9'
+            })
+            .then(function(res) {
+                expect(res).to.have.status(400);
+            })
+            .catch(function(err) {
+                expect(err).to.have.status(400);
+            });
+    });
+    it('should return Bad Request - Contains -ve salary value', function() {
+        return chai
+            .request(app)
+            .post('/payslip')
+            .type('form')
+            .send({
+                firstName: 'Andrew',
+                lastName: 'Smith',
+                annualSalary: '-60050',
+                superRate: '9'
+            })
+            .then(function(res) {
+                expect(res).to.have.status(400);
+            })
+            .catch(function(err) {
+                expect(err).to.have.status(400);
+            });
+    });
+    it('should return Bad Request - Contains -ve rate value', function() {
+        return chai
+            .request(app)
+            .post('/payslip')
+            .type('form')
+            .send({
+                firstName: 'Andrew',
+                lastName: 'Smith',
+                annualSalary: '60050',
+                superRate: '-9'
+            })
+            .then(function(res) {
+                expect(res).to.have.status(400);
+            })
+            .catch(function(err) {
+                expect(err).to.have.status(400);
+            });
+    });
+    it('should return Bad Request - Salary value not numeric', function() {
+        return chai
+            .request(app)
+            .post('/payslip')
+            .type('form')
+            .send({
+                firstName: 'Andrew',
+                lastName: 'Smith',
+                annualSalary: 'sample',
+                superRate: '9'
+            })
+            .then(function(res) {
+                expect(res).to.have.status(400);
+            })
+            .catch(function(err) {
+                expect(err).to.have.status(400);
+            });
+    });
+    it('should return Bad Request - Rate value not numeric', function() {
+        return chai
+            .request(app)
+            .post('/payslip')
+            .type('form')
+            .send({
+                firstName: 'Andrew',
+                lastName: 'Smith',
+                annualSalary: '60050',
+                superRate: 'sample'
             })
             .then(function(res) {
                 expect(res).to.have.status(400);
