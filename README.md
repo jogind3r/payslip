@@ -6,8 +6,8 @@ Simple application to calculate the tax
 
 ```sh
 npm install
-run app: npm start
 run tests: npm test
+run app: npm start
 ```
 
 ```sh
