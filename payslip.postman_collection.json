@@ -1,0 +1,267 @@
+{
+	"variables": [],
+	"info": {
+		"name": "payslip",
+		"_postman_id": "a9cedc5c-ed76-6df0-fc5e-df0074fddf28",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8000/payslip",
+			"request": {
+				"url": "http://localhost:8000/payslip",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "paymentPeriod",
+							"value": "31 march",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Andrew",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Smith",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "annualSalary",
+							"value": "60050",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "superRate",
+							"value": "9",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/",
+			"request": {
+				"url": "http://localhost:8000/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "paymentPeriod",
+							"value": "31 march",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Andrew",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Smith",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "annualSalary",
+							"value": "60050",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "superRate",
+							"value": "9",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/payslip",
+			"request": {
+				"url": "http://localhost:8000/payslip",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "paymentPeriod",
+							"value": "31 march",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Andrew",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Smith",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "annualSalary",
+							"value": "60050",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "superRate",
+							"value": "9",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/payslip",
+			"request": {
+				"url": "http://localhost:8000/payslip",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "paymentPeriod",
+							"value": "31 march",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Andrew",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "lastName",
+							"value": "Smith",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "annualSalary",
+							"value": "60050",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "superRate",
+							"value": "9",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/example",
+			"request": {
+				"url": "http://localhost:8000/example",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "paymentPeriod",
+							"value": "31 march",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Andrew",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Smith",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "annualSalary",
+							"value": "60050",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "9",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
