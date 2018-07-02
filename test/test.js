@@ -71,7 +71,7 @@ describe('API endpoint /payslip', function() {
         return chai
             .request(app)
             .post('/payslip')
-            .type('form')
+            .set('content-type', 'application/x-www-form-urlencoded')
             .send({
                 paymentPeriod: '31 march',
                 lastName: 'Smith',
@@ -89,7 +89,7 @@ describe('API endpoint /payslip', function() {
         return chai
             .request(app)
             .post('/payslip')
-            .type('form')
+            .set('content-type', 'application/x-www-form-urlencoded')
             .send({
                 paymentPeriod: '31 march',
                 FirstName: 'Smith',
@@ -107,7 +107,7 @@ describe('API endpoint /payslip', function() {
         return chai
             .request(app)
             .post('/payslip')
-            .type('form')
+            .set('content-type', 'application/x-www-form-urlencoded')
             .send({
                 paymentPeriod: '31 march',
                 firstName: 'Andrew',
@@ -125,7 +125,7 @@ describe('API endpoint /payslip', function() {
         return chai
             .request(app)
             .post('/payslip')
-            .type('form')
+            .set('content-type', 'application/x-www-form-urlencoded')
             .send({
                 paymentPeriod: '31 march',
                 firstName: 'Andrew',
@@ -143,7 +143,7 @@ describe('API endpoint /payslip', function() {
         return chai
             .request(app)
             .post('/payslip')
-            .type('form')
+            .set('content-type', 'application/x-www-form-urlencoded')
             .send({
                 firstName: 'Andrew',
                 lastName: 'Smith',
@@ -161,7 +161,7 @@ describe('API endpoint /payslip', function() {
         return chai
             .request(app)
             .post('/payslip')
-            .type('form')
+            .set('content-type', 'application/x-www-form-urlencoded')
             .send({
                 firstName: 'Andrew',
                 lastName: 'Smith',
@@ -179,7 +179,7 @@ describe('API endpoint /payslip', function() {
         return chai
             .request(app)
             .post('/payslip')
-            .type('form')
+            .set('content-type', 'application/x-www-form-urlencoded')
             .send({
                 firstName: 'Andrew',
                 lastName: 'Smith',
@@ -197,7 +197,7 @@ describe('API endpoint /payslip', function() {
         return chai
             .request(app)
             .post('/payslip')
-            .type('form')
+            .set('content-type', 'application/x-www-form-urlencoded')
             .send({
                 firstName: 'Andrew',
                 lastName: 'Smith',
@@ -215,7 +215,7 @@ describe('API endpoint /payslip', function() {
         return chai
             .request(app)
             .post('/payslip')
-            .type('form')
+            .set('content-type', 'application/x-www-form-urlencoded')
             .send({
                 firstName: 'Andrew',
                 lastName: 'Smith',
@@ -224,6 +224,111 @@ describe('API endpoint /payslip', function() {
             })
             .then(function(res) {
                 expect(res).to.have.status(400);
+            })
+            .catch(function(err) {
+                expect(err).to.have.status(400);
+            });
+    });
+    it('should return Tax value 0: sal < 18200', function() {
+        return chai
+            .request(app)
+            .post('/payslip')
+            .set('content-type', 'application/x-www-form-urlencoded')
+            .send({
+                paymentPeriod: '31 march',
+                firstName: 'Andrew',
+                lastName: 'Smith',
+                annualSalary: '60',
+                superRate: '9'
+            })
+            .then(function(res) {
+                expect(res).to.have.status(200);
+                expect(res).to.be.json;
+                expect(res.body['income-tax']).to.equal('0');
+            })
+            .catch(function(err) {
+                expect(err).to.have.status(400);
+            });
+    });
+    it('should return Tax value 298: 18200 < sal < 37000', function() {
+        return chai
+            .request(app)
+            .post('/payslip')
+            .set('content-type', 'application/x-www-form-urlencoded')
+            .send({
+                paymentPeriod: '31 march',
+                firstName: 'Andrew',
+                lastName: 'Smith',
+                annualSalary: '18208',
+                superRate: '9'
+            })
+            .then(function(res) {
+                expect(res).to.have.status(200);
+                expect(res).to.be.json;
+                expect(res.body['income-tax']).to.equal('298');
+            })
+            .catch(function(err) {
+                expect(err).to.have.status(400);
+            });
+    });
+    it('should return Tax value 352: 37000 < sal < 87000', function() {
+        return chai
+            .request(app)
+            .post('/payslip')
+            .set('content-type', 'application/x-www-form-urlencoded')
+            .send({
+                paymentPeriod: '31 march',
+                firstName: 'Andrew',
+                lastName: 'Smith',
+                annualSalary: '39000',
+                superRate: '9'
+            })
+            .then(function(res) {
+                expect(res).to.have.status(200);
+                expect(res).to.be.json;
+                expect(res.body['income-tax']).to.equal('352');
+            })
+            .catch(function(err) {
+                expect(err).to.have.status(400);
+            });
+    });
+    it('should return Tax value 1714: 87000 < sal < 180000', function() {
+        return chai
+            .request(app)
+            .post('/payslip')
+            .set('content-type', 'application/x-www-form-urlencoded')
+            .send({
+                paymentPeriod: '31 march',
+                firstName: 'Andrew',
+                lastName: 'Smith',
+                annualSalary: '89000',
+                superRate: '9'
+            })
+            .then(function(res) {
+                expect(res).to.have.status(200);
+                expect(res).to.be.json;
+                expect(res.body['income-tax']).to.equal('1714');
+            })
+            .catch(function(err) {
+                expect(err).to.have.status(400);
+            });
+    });
+    it('should return Tax value 4857: sal > 180000', function() {
+        return chai
+            .request(app)
+            .post('/payslip')
+            .set('content-type', 'application/x-www-form-urlencoded')
+            .send({
+                paymentPeriod: '31 march',
+                firstName: 'Andrew',
+                lastName: 'Smith',
+                annualSalary: '189000',
+                superRate: '9'
+            })
+            .then(function(res) {
+                expect(res).to.have.status(200);
+                expect(res).to.be.json;
+                expect(res.body['income-tax']).to.equal('4857');
             })
             .catch(function(err) {
                 expect(err).to.have.status(400);
