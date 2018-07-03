@@ -19,6 +19,8 @@ run tests: npm test
 run app: npm start
 ```
 
+### application route: /payslip method:POST
+
      - please check the postman collection to look into other request examples
 
 ## sample input and output

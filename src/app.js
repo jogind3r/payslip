@@ -29,18 +29,6 @@ try {
 
         next();
     });
-    // root route to give out api information
-    app.get('/', (req, res) => {
-        const response = {
-            info: 'payslip api',
-            method: 'post',
-            url: '/payslip',
-            fields: ['firstName', 'lastName', 'annualSalary', 'superRate', 'paymentPeriod'],
-            accepts: ['json', 'encodedURI'],
-            'response-type': 'json'
-        };
-        res.status(200).send(response);
-    });
     app.use('/payslip', routes);
     app.get('*', (req, res) => {
         res.status(404).send('page not found');
